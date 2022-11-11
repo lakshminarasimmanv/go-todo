@@ -11,3 +11,13 @@ services:
       POSTGRES_DB: todo
     ports:
       - 5432:5432
+
+  go-todo-app:
+    container_name: go-todo
+    image: hub.narasimman.xyz/go-todo:1.0
+    ports:
+      - 8000:8000
+    environment:
+      DATABASE_URL: postgres://username:password@localhost:5432/todo?sslmode=disable
+    depends_on:
+      - postgres
